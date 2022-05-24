@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Vokabeltrainer.iml" filepath="$PROJECT_DIR$/.idea/modules/Vokabeltrainer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Vokabeltrainer.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Vokabeltrainer.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Vokabeltrainer.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Vokabeltrainer.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Vokabeltrainer.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Vokabeltrainer.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Vokabeltrainer.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Vokabeltrainer.app.unitTest.iml" />
+    </modules>
+  </component>
+</project>
