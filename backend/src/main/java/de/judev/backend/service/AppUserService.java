@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import de.judev.backend.models.AppUser;
+import de.judev.backend.model.AppUser;
 import de.judev.backend.repository.AppUserRepo;
 import lombok.AllArgsConstructor;
 
@@ -21,5 +21,17 @@ public class AppUserService {
 
     public Optional<AppUser> getUserById(Long id) {
         return repo.findById(id);
+    }
+
+    public void saveUser(AppUser user) {
+        repo.save(user);
+    }
+
+    public void insertUser(AppUser user) {
+        repo.insert(user);
+    }
+
+    public void deleteUserById(Long id) {
+        repo.deleteById(id);
     }
 }

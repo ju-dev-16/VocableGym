@@ -1,4 +1,4 @@
-package de.judev.backend.models;
+package de.judev.backend.model;
 
 import java.util.List;
 
