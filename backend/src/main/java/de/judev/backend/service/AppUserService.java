@@ -19,19 +19,19 @@ public class AppUserService {
         return repo.findAll();
     }
 
-    public Optional<AppUser> getUserById(Long id) {
-        return repo.findById(id);
-    }
-
-    public void saveUser(AppUser user) {
-        repo.save(user);
+    public Optional<AppUser> getUserById(String id) {
+        return repo.findUserById(id);
     }
 
     public void insertUser(AppUser user) {
         repo.insert(user);
     }
 
-    public void deleteUserById(Long id) {
-        repo.deleteById(id);
+    public void saveUser(AppUser user) {
+        repo.save(user);
+    }
+
+    public void deleteUserById(String id) {
+        repo.deleteUserById(id);
     }
 }

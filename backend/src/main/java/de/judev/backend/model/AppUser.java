@@ -9,10 +9,10 @@ import de.judev.backend.data.VocabularySet;
 import lombok.Data;
 
 @Data
-@Document
+@Document(collection = "users")
 public class AppUser {
     @Id
-    private Long id;
+    private String id;
     private List<VocabularySet> vocabularySets;
 
     public AppUser(List<VocabularySet> vocabularySets) {
