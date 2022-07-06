@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { COLORS } from '../../utils/themes/Colors';
+import { getAllUsers } from '../../utils/api/users';
 
 export const VocabularySetsScreen = ({ navigation }) => {
+  useEffect(() => {
+    const fetchData = async () => {
+        console.log(await getAllUsers());
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <View style={styles.container}>
       <Ionicons 

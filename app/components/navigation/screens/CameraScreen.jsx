@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { Camera, CameraType } from 'expo-camera';
-import Torch from 'react-native-torch';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { COLORS } from '../../utils/themes/Colors';
@@ -11,19 +10,12 @@ export const CameraScreen = ({ navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(CameraType.back);
 
-  const [isTorchOn, setIsTorchOn] = useState(false);
-
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
       setHasPermission(status === 'granted');
     })();
   }, []);
-
-  const handlePress = () => {
-    Torch.switchState(!isTorchOn);
-    setIsTorchOn(!isTorchOn);
-  }
 
   if (hasPermission === null) {
     return <View />;
@@ -37,9 +29,7 @@ export const CameraScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Camera style={styles.preview} type={type}>
         <TouchableOpacity style={styles.menubar}>
-          <Ionicons name='flashlight-outline' size={48} color={COLORS.secondaryColor} 
-            style={styles.menuItem}
-            onPress={handlePress} />
+          <Ionicons name='flashlight-outline' size={48} color={COLORS.secondaryColor} style={styles.menuItem} />
           <Ionicons name='camera-outline' size={48} color={COLORS.secondaryColor} style={styles.menuItem} />
         </TouchableOpacity>
       </Camera>

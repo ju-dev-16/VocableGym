@@ -7,7 +7,7 @@ import { VocabularySetsScreen } from './screens/VocabularySetsScreen';
 import { CameraScreen } from './screens/CameraScreen';
 import { SettingsScreen } from './screens/SettingsScreen';
 
-import { COLORS } from '../../utils/themes/Colors';
+import { COLORS } from '../utils/themes/Colors';
 
 const vocabularySetsName = 'Vocabulary Sets';
 const cameraName = 'Camera';

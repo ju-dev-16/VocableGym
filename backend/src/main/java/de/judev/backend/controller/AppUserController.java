@@ -3,6 +3,7 @@ package de.judev.backend.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import de.judev.backend.service.AppUserService;
 import lombok.AllArgsConstructor;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("api/v1/users")
 @AllArgsConstructor
 public class AppUserController {
@@ -42,7 +44,16 @@ public class AppUserController {
     }
 
     @PutMapping("/save")
-    public void saveUser(@RequestBody AppUserRequest userRequest) {
+    public void saveUser(@RequestBody AppUser AppUser) {
+        AppUser user = service.getUserById(AppUser.getId()).get();
+
+        user.setVocabularySets(AppUser.getVocabularySets());
+
+        service.saveUser(user);
+    }
+
+    @PutMapping("/save-vocabulary-set")
+    public void saveUserVocabularySet(@RequestBody AppUserRequest userRequest) {
         AppUser user = service.getUserById(userRequest.getId()).get();
         
         user.getVocabularySets().get(userRequest.getRow()).setName(userRequest.getVocabularySetName());
