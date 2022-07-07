@@ -4,7 +4,7 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Camera, CameraType } from 'expo-camera';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { COLORS } from '../../utils/themes/Colors';
+import { COLORS } from '../../utils/themes/colors';
 
 export const CameraScreen = ({ navigation }) => {
   const [hasPermission, setHasPermission] = useState(null);

@@ -1,15 +1,16 @@
 const request = async (path, method, data) => {
     if (!data) {
         return await fetch(`http://localhost:8080/api/v1/users${path}`, {
-            method: method,
+            method,
             headers: { 'Content-Type': 'application/json' }
         })
-        .then(data => data.json())
+        .then(res => res.json())
+        .then(console.log)
         .catch(console.error);
     }
 
     return await fetch(`http://localhost:8080/api/v1/users${path}`, {
-        method: method,
+        method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     }).catch(console.error);

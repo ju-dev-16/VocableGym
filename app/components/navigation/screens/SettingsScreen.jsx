@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { COLORS } from '../../utils/themes/Colors';
+import { COLORS } from '../../utils/themes/colors';
 
 export const SettingsScreen = ({ navigation }) => {
   return (
