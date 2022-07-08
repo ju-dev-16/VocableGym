@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { useAsync } from 'react-async';
+import Async from 'react-async';
 
 import { COLORS } from '../../utils/themes/colors';
 import { getUser } from '../../utils/api/users';
@@ -10,21 +10,21 @@ import { NoVocabularySets } from '../../placeholder/NoVocabularySets';
 
 export const VocabularySetsScreen = ({ navigation }) => {
   const VocabularySets = () => {
-    const { data, error } = useAsync({getUser, id: '62c58ea64d2bd966791e2011'});
+    return <Async promiseFn={getUser} id='62c85cb46f0e20346aa930f0'>
+      {({ data, error, isPending }) => {
+        if (isPending) return <NoVocabularySets />
 
-    if (error) return error.message;
-
-    if (!data) return <NoVocabularySets />
-  
-    return (
-      <ScrollView>
-      {() => {
-        return (
-          data.vocabularySets.map(vocabularySet => <VocabularySet name={vocabularySet.name} /> )
-        );
+        if (error) return <Text>Something went wrong: {error.message}</Text>;
+        
+        if (data) {
+          return (
+            <ScrollView style={styles.vocabularySets}>
+              {data.vocabularySets.map(({ created, name, vocabularies }) => <VocabularySet created={created} name={name} vocabularies={vocabularies} key={name}/> )}
+            </ScrollView>
+          );
+        }
       }}
-      </ScrollView>
-    );
+    </Async>
   }
 
   return (
@@ -47,6 +47,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: COLORS.primaryBackgroundColor
   },
+  vocabularySets: {
+    position: 'absolute',
+    top: 20,
+    left: 0,
+    right: 0,
+    bottom: 0
+  },
   headline: {
     fontSize: 28,
     fontWeight: 'bold',
@@ -57,7 +64,7 @@ const styles = StyleSheet.create({
     width: 75,
     height: 75,
     borderRadius: 50,
-    top: 230,
+    top: 225,
     left: 120
   },
   buttonText: {

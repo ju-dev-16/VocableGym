@@ -1,15 +1,14 @@
 const request = async (path, method, data) => {
     if (!data) {
-        return await fetch(`http://localhost:8080/api/v1/users${path}`, {
+        return await fetch(`http://192.168.0.12:8080/api/v1/users${path}`, {
             method,
             headers: { 'Content-Type': 'application/json' }
         })
         .then(res => res.json())
-        .then(console.log)
         .catch(console.error);
     }
 
-    return await fetch(`http://localhost:8080/api/v1/users${path}`, {
+    return await fetch(`http://192.168.0.12:8080/api/v1/users${path}`, {
         method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -17,21 +16,21 @@ const request = async (path, method, data) => {
 }
 
 export const getAllUsers = async () => {
-    await request('/', 'GET');
+    return await request('/', 'GET');
 }
 
-export const getUser = async (id) => {
-    await request(`/get?id=${id}`, 'GET');
+export const getUser = async ({ id }) => {
+    return await request(`/get?id=${id}`, 'GET');
 }
 
 export const insertUser = async (vocabularySets) => {
-    await request('/insert', 'POST', { vocabularySets });
+    return await request('/insert', 'POST', { vocabularySets });
 }
 
 export const saveUser = async (id, row, vocabularySetName, vocabularies) => {
-    await request('/save', 'PUT', { id, row, vocabularySetName, vocabularies });
+    return await request('/save', 'PUT', { id, row, vocabularySetName, vocabularies });
 }
 
 export const deleteUser = async (id) => {
-    await request(`/delete?id=${id}`, 'DELETE');
+    return await request(`/delete?id=${id}`, 'DELETE');
 }   

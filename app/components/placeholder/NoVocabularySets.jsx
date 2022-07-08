@@ -10,8 +10,7 @@ export const NoVocabularySets = () => {
       <Ionicons 
         name='file-tray-stacked' 
         size={200} 
-        color={COLORS.playerholderColor}
-        onPress={() => navigation.navigate('Camera')} />
+        color={COLORS.playerholderColor}/>
       <Text style={styles.headline}>No vocabulary sets</Text>
     </View>
   );

@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     height: 75,
     backgroundColor: COLORS.secondaryColor,
     borderBottomColor: COLORS.primaryBackgroundColor,
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 5,
   },
   buttonText: {
     fontSize: 24,
