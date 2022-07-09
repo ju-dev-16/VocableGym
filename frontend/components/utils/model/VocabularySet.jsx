@@ -6,7 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { COLORS } from '../themes/colors';
 import { deleteUser } from '../api/users';
 
-export const VocabularySet = ({ created, name, vocabularies, id }) => {
+export const VocabularySet = ({ created, name, vocabularies }) => {
   return (
     <View style={styles.buttonView}>
       <Text style={styles.text}>{name}</Text>
