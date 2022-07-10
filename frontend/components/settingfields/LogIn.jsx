@@ -8,8 +8,8 @@ import { styles } from './Styles';
 
 export const Login = () => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [username, onChangeUsername] = useState(null);
-  const [password, onChangePassword] = useState(null);
+  const [username, setUsername] = useState(null);
+  const [password, setPassword] = useState(null);
 
   return (
     <>
@@ -18,22 +18,26 @@ export const Login = () => {
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
       <Popup modalVisible={modalVisible} setModalVisible={setModalVisible}>
-        <View>
-          <Text style={loginStyles.title}>Login</Text>
-          <TextInput
-            style={loginStyles.input}
-            onChangeText={onChangeUsername}
-            value={username}
-            placeholder='username' />
-          <TextInput
-            style={loginStyles.input}
-            onChangeText={onChangePassword}
-            value={password}
-            placeholder='password' />
-          <TouchableOpacity style={loginStyles.submit}>
-            <Ionicons name='log-in-outline' size={64} color={COLORS.primaryColor} />
-          </TouchableOpacity>
-        </View>
+        <Text style={loginStyles.title}>Login</Text>
+        <TextInput
+          style={loginStyles.input}
+          onChangeText={setUsername}
+          value={username}
+          placeholder='username' />
+        <TextInput
+          style={loginStyles.input}
+          onChangeText={setPassword}
+          value={password}
+          placeholder='password' />
+        <TouchableOpacity style={loginStyles.forgotPassword}>
+          <Text style={loginStyles.forgotPasswordText}>Forgot Password?</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={loginStyles.submit}>
+          <Ionicons name='log-in-outline' size={64} color={COLORS.primaryColor} />
+        </TouchableOpacity>
+        <TouchableOpacity style={loginStyles.createAccount}>
+          <Text>CREATE ACCOUNT</Text>
+        </TouchableOpacity>
       </Popup>
     </>
   );
@@ -45,17 +49,31 @@ const loginStyles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     color: COLORS.primaryColor,
-    marginBottom: 50
+    marginBottom: 100
   },
   input: {
     height: 40,
     margin: 12,
-    borderWidth: 0.5,
+    border: 'none',
     padding: 10,
-    borderRadius: 20
+    paddingLeft: 15,
+    borderRadius: 20,
+    outlineStyle: 'none',
+    backgroundColor: 'lightgrey'
   },
+  forgotPassword: {
+    left: 20
+  },  
+  forgotPasswordText: {
+    textDecorationLine: 'underline',
+    color: COLORS.primaryColor,
+  },  
   submit: {
-    top: 25,
+    top: 150,
     left: 110
+  },
+  createAccount: {
+    textAlign: 'center',
+    top: 160
   }
 });

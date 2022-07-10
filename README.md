@@ -1,4 +1,4 @@
-# Vokabeltrainer
+# VocableGym
 
 ## Phase
 Development
