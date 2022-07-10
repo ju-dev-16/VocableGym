@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { COLORS } from '../../utils/themes/colors';
 import { Help } from '../../settingfields/Help';
 import { About } from '../../settingfields/About';
-import { LogIn } from '../../settingfields/LogIn';
+import { Login } from '../../settingfields/Login';
 
 export const SettingsScreen = ({ navigation }) => {
   return (
@@ -12,7 +12,7 @@ export const SettingsScreen = ({ navigation }) => {
       <View style={styles.buttonView}>
         <Help />
         <About />
-        <LogIn />
+        <Login />
       </View>
     </View>
   );

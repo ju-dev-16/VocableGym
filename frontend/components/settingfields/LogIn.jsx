@@ -1,83 +1,61 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Modal } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, TextInput, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { COLORS } from '../utils/themes/colors';
+import { Popup } from '../utils/model/Popup';
+import { styles } from './Styles';
 
-export const LogIn = () => {
+export const Login = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [username, onChangeUsername] = useState(null);
+  const [password, onChangePassword] = useState(null);
 
   return (
     <>
       <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)}>
         <Ionicons name='log-in-outline' size={32} color={COLORS.primaryColor}/>
-        <Text style={styles.buttonText}>Log In</Text>
+        <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => setModalVisible(!modalVisible)}>
-        <View style={styles.container}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
-            <TouchableOpacity
-              style={styles.buttonClose}
-              onPress={() => setModalVisible(!modalVisible)}>
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </TouchableOpacity>
-          </View>
+      <Popup modalVisible={modalVisible} setModalVisible={setModalVisible}>
+        <View>
+          <Text style={loginStyles.title}>Login</Text>
+          <TextInput
+            style={loginStyles.input}
+            onChangeText={onChangeUsername}
+            value={username}
+            placeholder='username' />
+          <TextInput
+            style={loginStyles.input}
+            onChangeText={onChangePassword}
+            value={password}
+            placeholder='password' />
+          <TouchableOpacity style={loginStyles.submit}>
+            <Ionicons name='log-in-outline' size={64} color={COLORS.primaryColor} />
+          </TouchableOpacity>
         </View>
-      </Modal>
+      </Popup>
     </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.primaryBackgroundColor
-  },
-  button: {
-    flexDirection: 'row',
-    paddingVertical: 20,
-    paddingLeft: 20,
-    height: 75,
-    backgroundColor: COLORS.secondaryColor,
-    borderBottomColor: COLORS.primaryBackgroundColor,
-    borderBottomWidth: 1,
-  },
-  buttonText: {
-    fontSize: 24,
+const loginStyles = StyleSheet.create({
+  title: {
+    fontSize: 32,
     fontWeight: 'bold',
+    textAlign: 'center',
     color: COLORS.primaryColor,
-    paddingLeft: 20
+    marginBottom: 50
   },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 0.5,
+    padding: 10,
+    borderRadius: 20
   },
-  buttonClose: {
-    backgroundColor: COLORS.primaryColor,
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center'
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center'
-  },
+  submit: {
+    top: 25,
+    left: 110
+  }
 });
