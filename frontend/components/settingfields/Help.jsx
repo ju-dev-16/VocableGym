@@ -15,7 +15,7 @@ export const Help = () => {
         <Ionicons name='help-circle-outline' size={32} color={COLORS.primaryColor} style={{alignSelf: 'center'}} />
         <Text style={styles.buttonText}>Help</Text>
       </TouchableOpacity>
-      <Popup modalVisible={modalVisible} setModalVisible={setModalVisible}>
+      <Popup modalVisible={modalVisible} setModalVisible={setModalVisible} title='Help'>
 
       </Popup>
     </>

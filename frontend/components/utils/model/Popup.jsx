@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity, Modal } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Text, Modal } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { COLORS } from '../themes/colors';
 
-export const Popup = ({ children, modalVisible, setModalVisible }) => {
+export const Popup = ({ children, modalVisible, setModalVisible, title }) => {
   return (
     <Modal
       animationType='slide'
@@ -16,6 +16,7 @@ export const Popup = ({ children, modalVisible, setModalVisible }) => {
           <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
             <Ionicons name='arrow-back-outline' size={44} color={COLORS.primaryColor}/>
           </TouchableOpacity>
+          <Text style={styles.title}>{title}</Text>
           {children}
         </View>
       </View>
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     height: 650,
-    margin: 22,
+    margin: 18,
     backgroundColor: 'white',
     borderRadius: 20,
     padding: 10,
@@ -43,5 +44,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: COLORS.primaryColor,
+    marginBottom: 100
   }
 });

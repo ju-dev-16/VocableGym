@@ -21,5 +21,18 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: COLORS.primaryColor,
     paddingLeft: 20
+  },
+  infos: {
+    marginHorizontal: 10
+  },
+  infoText: {
+    color: COLORS.primaryColor,
+    fontSize: 22
+  },  
+  socials: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 30,
+    top: 175
   }
 });

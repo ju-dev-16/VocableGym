@@ -17,8 +17,7 @@ export const Login = () => {
         <Ionicons name='log-in-outline' size={32} color={COLORS.primaryColor}/>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-      <Popup modalVisible={modalVisible} setModalVisible={setModalVisible}>
-        <Text style={loginStyles.title}>Login</Text>
+      <Popup modalVisible={modalVisible} setModalVisible={setModalVisible} title='Login'>
         <TextInput
           style={loginStyles.input}
           onChangeText={setUsername}
@@ -44,36 +43,29 @@ export const Login = () => {
 }
 
 const loginStyles = StyleSheet.create({
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: COLORS.primaryColor,
-    marginBottom: 100
-  },
   input: {
-    height: 40,
+    height: 50,
     margin: 12,
-    border: 'none',
+    borderWidth: 0,
     padding: 10,
     paddingLeft: 15,
     borderRadius: 20,
-    outlineStyle: 'none',
-    backgroundColor: 'lightgrey'
+    backgroundColor: 'lightgrey',
+    color: COLORS.primaryColor
   },
   forgotPassword: {
     left: 20
   },  
   forgotPasswordText: {
     textDecorationLine: 'underline',
-    color: COLORS.primaryColor,
+    color: COLORS.primaryColor
   },  
   submit: {
-    top: 150,
+    top: 75,
     left: 110
   },
   createAccount: {
-    textAlign: 'center',
-    top: 160
+    top: 150,
+    left: 90
   }
 });
