@@ -17,19 +17,19 @@ export const About = () => {
       </TouchableOpacity>
       <Popup modalVisible={modalVisible} setModalVisible={setModalVisible} title='About'>
         <View style={styles.infos}>
-          <Text style={styles.infoText}>{'\u2022'} I'm a 16 years old student {'&'} hobby developer</Text>
-          <Text style={styles.infoText}>{'\u2022'} I’m currently working on Java, Python and JavaScript</Text>
-          <Text style={styles.infoText}>{'\u2022'} How to reach me: jahidudd65@gmail.com</Text>
+          <Text style={styles.infoText}>I'm a 16 years old student {'&'} hobby developer.</Text>
+          <Text style={styles.infoText}>I'm currently working on Java, Python and JavaScript.</Text>
+          <Text style={styles.infoText}>How to reach me: jahidudd65@gmail.com</Text>
         </View>
         <View style={styles.socials}>
           <TouchableOpacity onPress={() => Linking.openURL('https://twitter.com/JuDev75361232?t=7SKMV-5apxuPdi3hgnV0MQ&s=09')}>
-            <Ionicons name='logo-twitter' size={64} color={COLORS.primaryColor} />
+            <Ionicons name='logo-twitter' size={50} color={COLORS.primaryColor} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => Linking.openURL('https://www.instagram.com/accounts/onetap/?next=%2Fjahid_uddinx%2F')}>
-            <Ionicons name='logo-instagram' size={64} color={COLORS.primaryColor} />
+            <Ionicons name='logo-instagram' size={50} color={COLORS.primaryColor} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => Linking.openURL('https://github.com/ju-dev-16')}>
-            <Ionicons name='logo-github' size={64} color={COLORS.primaryColor} />
+            <Ionicons name='logo-github' size={50} color={COLORS.primaryColor} />
           </TouchableOpacity>
         </View>
       </Popup>

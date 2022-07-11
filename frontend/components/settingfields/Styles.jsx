@@ -27,12 +27,14 @@ export const styles = StyleSheet.create({
   },
   infoText: {
     color: COLORS.primaryColor,
-    fontSize: 22
+    fontSize: 22,
+    marginVertical: 5,
+    bottom: 50
   },  
   socials: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: 30,
-    top: 175
+    marginHorizontal: 40,
+    top: 150
   }
 });
