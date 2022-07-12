@@ -10,44 +10,32 @@ import { NoVocabularySets } from '../../placeholder/NoVocabularySets';
 
 export const VocabularySetsScreen = ({ navigation }) => {
   const VocabularySets = () => {
-    return <Async promiseFn={getUser} id='62c93d54af359c003c4d8b71'>
+    return <Async promiseFn={getUser} id='62cd7339dd6df23579d76205'>
       {({ data, error, isPending }) => {
-        if (isPending) return <ActivityIndicator animating={isPending} size='large' />
+        if (isPending) return <ActivityIndicator animating={isPending} size='large' style={{flex: 1, justifyContent: 'center'}} />;
 
         if (error) return <Text>Something went wrong: {error.message}</Text>;
         
-        if (data) {
-          return (
-            <View style={styles.container}>
-              <ScrollView style={styles.vocabularySets}>
-                {data.vocabularySets.map(({ created, name, vocabularies }) => <VocabularySet created={created} name={name} vocabularies={vocabularies} key={name}/> )}
-              </ScrollView>
-              <TouchableOpacity 
-                onPress={() => navigation.navigate('Camera')}
-                style={styles.buttonVocabularySets}>
-                <Text style={styles.buttonText}>+</Text>
-              </TouchableOpacity>
-              <StatusBar style='light' />
-            </View>
-          );
-        } else {
-          return (
-            <View style={styles.container}>
-              <NoVocabularySets />
-              <TouchableOpacity 
-                onPress={() => navigation.navigate('Camera')}
-                style={styles.buttonNoVocabularySets}>
-                <Text style={styles.buttonText}>+</Text>
-              </TouchableOpacity>
-              <StatusBar style='light' />
-            </View>
-          );
-        }
+        return data
+          ? <ScrollView style={styles.vocabularySets}>
+              {data.vocabularySets.map(({ created, name, vocabularies }) => <VocabularySet created={created} name={name} vocabularies={vocabularies} key={name}/> )}
+            </ScrollView>
+          : <NoVocabularySets />
       }}
     </Async>
   }
 
-  return <VocabularySets />;
+  return (
+    <View style={styles.container}>
+      <VocabularySets />
+      <TouchableOpacity 
+        onPress={() => navigation.navigate('Camera')}
+        style={styles.button}>
+        <Text style={styles.buttonText}>+</Text>
+      </TouchableOpacity>
+      <StatusBar style='light' />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -69,21 +57,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: COLORS.secondaryColor,
   },
-  buttonVocabularySets: {
+  button: {
     backgroundColor: COLORS.secondaryColor,
     width: 75,
     height: 75,
     borderRadius: 50,
-    top: 225,
-    left: 120
-  },
-  buttonNoVocabularySets: {
-    backgroundColor: COLORS.secondaryColor,
-    width: 75,
-    height: 75,
-    borderRadius: 50,
+    position: 'absolute',
     bottom: 50,
-    left: 120
+    right: 22
   },
   buttonText: {
     color: COLORS.activeTintColor,

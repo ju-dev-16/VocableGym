@@ -36,5 +36,19 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 40,
     top: 150
+  },
+  help: {
+    bottom: 60,
+    margin: 10
+  },
+  headline: {
+    fontWeight: 'bold',
+    fontSize: 22
+  },
+  helpText: {
+    top: 5,
+    fontSize: 22,
+    color: COLORS.primaryColor,
+    marginVertical: 5
   }
 });
