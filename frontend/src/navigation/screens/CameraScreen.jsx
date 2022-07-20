@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { Camera, CameraType } from 'expo-camera';

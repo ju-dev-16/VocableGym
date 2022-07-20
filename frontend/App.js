@@ -1,9 +1,5 @@
-import React from 'react';
+import MainContainer from './src/navigation/MainContainer';
 
-import { MainContainer } from './components/navigation/MainContainer';
+const App = () => <MainContainer />
 
-export default function App() {
-  return (
-    <MainContainer />
-  );
-}
+export default App;

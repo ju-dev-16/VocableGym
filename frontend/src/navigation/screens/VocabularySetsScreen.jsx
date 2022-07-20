@@ -1,22 +1,23 @@
-import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import Async from 'react-async';
 
 import { COLORS } from '../../utils/themes/colors';
-import { getUser } from '../../utils/api/users';
 import { VocabularySet } from '../../utils/model/VocabularySet';
 import { NoVocabularySets } from '../../placeholder/NoVocabularySets';
+import useApi from '../../hooks/useApi';
 
 export const VocabularySetsScreen = ({ navigation }) => {
+  const { getUser } = useApi();
+
   const VocabularySets = () => {
     return <Async promiseFn={getUser} id='62cd7339dd6df23579d76205'>
       {({ data, error, isPending }) => {
         if (isPending) return <ActivityIndicator animating={isPending} size='large' style={{flex: 1, justifyContent: 'center'}} />;
 
-        if (error) return <Text>Something went wrong: {error.message}</Text>;
+        if (error) return <Text style={{color: '#fff'}}>Something went wrong: {error.message}</Text>;
         
-        return data
+        return data.vocabularySets
           ? <ScrollView style={styles.vocabularySets}>
               {data.vocabularySets.map(({ created, name, vocabularies }) => <VocabularySet created={created} name={name} vocabularies={vocabularies} key={name}/> )}
             </ScrollView>

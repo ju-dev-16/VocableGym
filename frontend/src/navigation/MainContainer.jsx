@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -15,7 +14,7 @@ const settingsName = 'Settings'
 
 const Tab = createBottomTabNavigator();
 
-export const MainContainer = () => {
+const MainContainer = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -51,3 +50,5 @@ export const MainContainer = () => {
     </NavigationContainer>
   );
 }
+
+export default MainContainer;
