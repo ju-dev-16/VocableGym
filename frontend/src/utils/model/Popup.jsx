@@ -6,29 +6,36 @@ import { COLORS } from '../themes/colors';
 export const Popup = ({ children, modalVisible, setModalVisible, title }) => {
   return (
     <Modal
-      animationType='slide'
-      transparent={true}
-      visible={modalVisible}
-      onRequestClose={() => setModalVisible(!modalVisible)}>
-      <View style={styles.container}>
+    animationType='slide'
+    transparent={true}
+    visible={modalVisible}
+    onRequestClose={() => setModalVisible(!modalVisible)}>
+
+      <View style={{flex: 1, justifyContent: 'center', backgroundColor: COLORS.primaryBackgroundColor}}>
         <View style={styles.modalView}>
+
           <TouchableOpacity onPress={() => setModalVisible(!modalVisible)}>
-            <Ionicons name='arrow-back-outline' size={44} color={COLORS.primaryColor}/>
+            <Ionicons 
+            name='arrow-back-outline' 
+            size={44} 
+            color={COLORS.primaryColor}
+            />
           </TouchableOpacity>
-          <Text style={styles.title}>{title}</Text>
+
+          <Text style={styles.title}>
+            {title}
+          </Text>
+
           {children}
+
         </View>
       </View>
+
     </Modal>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: COLORS.primaryBackgroundColor
-  },
   modalView: {
     height: 650,
     margin: 18,

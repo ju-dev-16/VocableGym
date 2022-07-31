@@ -1,14 +1,14 @@
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 
 import { COLORS } from '../../utils/themes/colors';
-import { Help } from '../../settingfields/Help';
-import { About } from '../../settingfields/About';
-import { Login } from '../../settingfields/Login';
+import { Help } from '../settingfields/Help';
+import { About } from '../settingfields/About';
+import { Login } from '../settingfields/Login';
 
-export const SettingsScreen = ({ navigation }) => {
+export const SettingsScreen = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.buttonView}>
+    <View style={{flex: 1, backgroundColor: COLORS.primaryBackgroundColor}}>
+      <View style={{marginTop: 20}}>
         <Help />
         <About />
         <Login />
@@ -16,13 +16,3 @@ export const SettingsScreen = ({ navigation }) => {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.primaryBackgroundColor
-  },
-  buttonView: {
-    marginTop: 20
-  }
-});

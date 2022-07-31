@@ -6,11 +6,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { COLORS } from '../../utils/themes/colors';
 
-export const CameraScreen = ({ navigation }) => {
+export const CameraScreen = () => {
+
   const [hasPermission, setHasPermission] = useState(null);
-  const [type, setType] = useState(CameraType.back);
+  const [type, _setType] = useState(CameraType.back);
   const [camera, setCamera] = useState(null);
-  const [image, setImage] = useState(null);
+  const [_image, setImage] = useState(null);
   const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
 
   useEffect(() => {
@@ -44,8 +45,10 @@ export const CameraScreen = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.container}>
-      <Camera style={styles.preview} type={type} flashMode={flash} ref={ref => setCamera(ref)} >
+    <View style={{flex: 1}}>
+
+      <Camera style={styles.preview} type={type} flashMode={flash} ref={ref => setCamera(ref)}>
+
         <View style={styles.menubar}>
           <TouchableOpacity onPress={flashlight}>
             <Ionicons name='flashlight-outline' size={48} color={COLORS.secondaryColor} style={styles.menuItem} />
@@ -54,15 +57,14 @@ export const CameraScreen = ({ navigation }) => {
             <Ionicons name='camera-outline' size={48} color={COLORS.secondaryColor} style={styles.menuItem} />
           </TouchableOpacity>
         </View>
+        
       </Camera>
+
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
   preview: {
     flex: 1,
     alignItems: 'center',

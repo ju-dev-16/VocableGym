@@ -4,7 +4,7 @@ import Async from 'react-async';
 
 import { COLORS } from '../../utils/themes/colors';
 import { VocabularySet } from '../../utils/model/VocabularySet';
-import { NoVocabularySets } from '../../placeholder/NoVocabularySets';
+import { NoVocabularySets } from '../../utils/placeholder/NoVocabularySets'
 import useApi from '../../hooks/useApi';
 
 export const VocabularySetsScreen = ({ navigation }) => {
@@ -13,13 +13,19 @@ export const VocabularySetsScreen = ({ navigation }) => {
   const VocabularySets = () => {
     return <Async promiseFn={getUser} id='62cd7339dd6df23579d76205'>
       {({ data, error, isPending }) => {
-        if (isPending) return <ActivityIndicator animating={isPending} size='large' style={{flex: 1, justifyContent: 'center'}} />;
+        if (isPending) {
+          return <ActivityIndicator animating={isPending} size='large' style={{flex: 1, justifyContent: 'center'}} />;
+        }
 
-        if (error) return <Text style={{color: '#fff'}}>Something went wrong: {error.message}</Text>;
+        if (error) {
+          return <Text style={{color: '#fff'}}>Something went wrong: {error.message}</Text>;
+        }
         
         return data.vocabularySets
           ? <ScrollView style={styles.vocabularySets}>
-              {data.vocabularySets.map(({ created, name, vocabularies }) => <VocabularySet created={created} name={name} vocabularies={vocabularies} key={name}/> )}
+              {data.vocabularySets.map(({ created, name, vocabularies }) => {
+                return <VocabularySet created={created} name={name} vocabularies={vocabularies} key={name}/> 
+              })}
             </ScrollView>
           : <NoVocabularySets />
       }}
@@ -27,25 +33,23 @@ export const VocabularySetsScreen = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: COLORS.primaryBackgroundColor}}>
+
       <VocabularySets />
+
       <TouchableOpacity 
         onPress={() => navigation.navigate('Camera')}
         style={styles.button}>
         <Text style={styles.buttonText}>+</Text>
       </TouchableOpacity>
+
       <StatusBar style='light' />
+      
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: COLORS.primaryBackgroundColor
-  },
   vocabularySets: {
     position: 'absolute',
     top: 20,
